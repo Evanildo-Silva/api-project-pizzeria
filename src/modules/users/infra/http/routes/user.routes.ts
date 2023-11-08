@@ -17,4 +17,14 @@ usersRouter.post(
   userController.create,
 );
 
+usersRouter.get(
+  "/:id",
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  userController.show,
+);
+
 export default usersRouter;

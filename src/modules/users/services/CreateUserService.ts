@@ -9,11 +9,11 @@ import { IUsersRepository } from "../domain/repositories/IUserRepository";
 class CreateUserService {
   constructor(
     @inject("UserRepository")
-    private UserRepository: IUsersRepository,
+    private userRepository: IUsersRepository,
   ) {}
 
   public async execute({ name, email, password }: ICreateUser): Promise<IUser> {
-    const emailExists = await this.UserRepository.findByEmail(email);
+    const emailExists = await this.userRepository.findByEmail(email);
 
     if (emailExists) {
       throw new AppError("Email address already used.");
@@ -21,7 +21,7 @@ class CreateUserService {
 
     const hashedPassword = await hash(password, 8);
 
-    const user = await this.UserRepository.create({
+    const user = await this.userRepository.create({
       name,
       email,
       password: hashedPassword,
