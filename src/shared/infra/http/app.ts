@@ -1,4 +1,5 @@
 import AppError from "@shared/errors/AppError";
+import "@shared/infra/typeorm";
 import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 import { routes } from "./routes";
