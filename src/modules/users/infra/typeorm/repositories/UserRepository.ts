@@ -26,6 +26,12 @@ class UsersRepository implements IUsersRepository {
 
     return user;
   }
+
+  public async findByEmail(email: string): Promise<IUser | null> {
+    const user = await this.ormRepository.findOneBy({ email });
+
+    return user;
+  }
 }
 
 export default UsersRepository;
