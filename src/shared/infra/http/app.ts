@@ -1,9 +1,8 @@
 import AppError from "@shared/errors/AppError";
+import "@shared/infra/typeorm";
 import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 import { routes } from "./routes";
-
-const port = 3333;
 
 const app = express();
 
@@ -28,6 +27,4 @@ app.use(
   },
 );
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}🚀!`);
-});
+export { app };
