@@ -1,4 +1,5 @@
 import AppError from "@shared/errors/AppError";
+import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
 import { ICreateUser } from "../domain/models/ICreateUser";
 import { IUser } from "../domain/models/IUser";
@@ -18,10 +19,12 @@ class CreateUserService {
       throw new AppError("Email address already used.");
     }
 
+    const hashedPassword = await hash(password, 8);
+
     const user = await this.UserRepository.create({
       name,
       email,
-      password,
+      password: hashedPassword,
     });
 
     return user;
