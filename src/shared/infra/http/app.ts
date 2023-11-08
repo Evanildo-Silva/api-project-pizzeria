@@ -1,7 +1,9 @@
+import "@shared/container";
 import AppError from "@shared/errors/AppError";
 import "@shared/infra/typeorm";
 import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
+import "express-async-errors";
 import { routes } from "./routes";
 
 const app = express();
