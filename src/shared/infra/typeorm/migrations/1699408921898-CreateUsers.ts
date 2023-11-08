@@ -27,7 +27,7 @@ export class CreateUsers1699408921898 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "create_at",
+            name: "created_at",
             type: "timestamp with time zone",
             default: "now()",
           },

@@ -5,7 +5,7 @@ import { dataSource } from "@shared/infra/typeorm";
 import { Repository } from "typeorm";
 import User from "../entities/User";
 
-class UsersRepository implements IUsersRepository {
+class UserRepository implements IUsersRepository {
   private ormRepository: Repository<User>;
 
   constructor() {
@@ -34,4 +34,4 @@ class UsersRepository implements IUsersRepository {
   }
 }
 
-export default UsersRepository;
+export default UserRepository;

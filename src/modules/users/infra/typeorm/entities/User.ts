@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
-@Entity()
+@Entity("users")
 class User implements IUser {
   @PrimaryGeneratedColumn("uuid")
   id: string;
@@ -22,10 +22,10 @@ class User implements IUser {
   password: string;
 
   @CreateDateColumn()
-  created_at: string;
+  created_at: Date;
 
   @UpdateDateColumn()
-  updated_at: string;
+  updated_at: Date;
 }
 
 export default User;
