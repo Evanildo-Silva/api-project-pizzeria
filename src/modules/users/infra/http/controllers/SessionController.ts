@@ -1,4 +1,4 @@
-import CreateSessionService from "@modules/users/services/CreateSessionSession";
+import CreateSessionService from "@modules/users/services/CreateSessionService";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
