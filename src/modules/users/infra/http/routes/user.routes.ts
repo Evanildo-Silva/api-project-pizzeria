@@ -1,3 +1,4 @@
+import isAuthenticated from "@shared/infra/http/middleware/isAuthenticated";
 import { celebrate, Joi, Segments } from "celebrate";
 import { Router } from "express";
 import UserController from "../controllers/UserController";
@@ -19,6 +20,7 @@ usersRouter.post(
 
 usersRouter.get(
   "/:id",
+  isAuthenticated,
   celebrate({
     [Segments.PARAMS]: {
       id: Joi.string().uuid().required(),
