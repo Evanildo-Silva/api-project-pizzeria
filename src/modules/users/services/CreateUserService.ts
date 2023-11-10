@@ -2,7 +2,7 @@ import AppError from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { ICreateUser } from "../domain/models/ICreateUser";
 import { IUser } from "../domain/models/IUser";
-import { IUsersRepository } from "../domain/repositories/IUserRepository";
+import { IUsersRepository } from "../domain/repositories/IUsersRepository";
 import { IHashProvider } from "../providers/HashProvider/models/IHashProvider";
 
 @injectable()
