@@ -1,7 +1,7 @@
 import AppError from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { IShowUser } from "../domain/models/IShowUser";
-import { IUsersRepository } from "../domain/repositories/IUserRepository";
+import { IUsersRepository } from "../domain/repositories/IUsersRepository";
 import User from "../infra/typeorm/entities/User";
 
 @injectable()

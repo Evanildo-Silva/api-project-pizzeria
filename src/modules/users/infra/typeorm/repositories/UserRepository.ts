@@ -1,6 +1,6 @@
 import { ICreateUser } from "@modules/users/domain/models/ICreateUser";
 import { IUser } from "@modules/users/domain/models/IUser";
-import { IUsersRepository } from "@modules/users/domain/repositories/IUserRepository";
+import { IUsersRepository } from "@modules/users/domain/repositories/IUsersRepository";
 import { dataSource } from "@shared/infra/typeorm";
 import { Repository } from "typeorm";
 import User from "../entities/User";

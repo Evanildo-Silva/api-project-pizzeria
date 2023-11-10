@@ -5,7 +5,7 @@ import { Secret, sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 import { ICreateSession } from "../domain/models/ICreateSession";
 import { IUserAuthenticated } from "../domain/models/IUserAuthenticated";
-import { IUsersRepository } from "../domain/repositories/IUserRepository";
+import { IUsersRepository } from "../domain/repositories/IUsersRepository";
 
 @injectable()
 class CreateSessionService {
