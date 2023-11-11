@@ -43,6 +43,7 @@ class CreateSessionService {
       expiresIn: authConfig.jwt.expiresIn,
     });
 
+    // Retorna objeto user + token
     return {
       user,
       token,
