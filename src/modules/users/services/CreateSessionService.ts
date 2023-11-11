@@ -1,17 +1,19 @@
 import authConfig from "@config/auth";
 import AppError from "@shared/errors/AppError";
-import { compare } from "bcryptjs";
 import { Secret, sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 import { ICreateSession } from "../domain/models/ICreateSession";
 import { IUserAuthenticated } from "../domain/models/IUserAuthenticated";
 import { IUsersRepository } from "../domain/repositories/IUsersRepository";
+import { IHashProvider } from "../providers/HashProvider/models/IHashProvider";
 
 @injectable()
 class CreateSessionService {
   constructor(
     @inject("UserRepository")
     private userRepository: IUsersRepository,
+    @inject("HashProvider")
+    private hashProvider: IHashProvider,
   ) {}
 
   public async execute({
@@ -26,7 +28,10 @@ class CreateSessionService {
     }
 
     // Verificar a senha informada pelo usuário com a senha cadastrada.
-    const passwordConfirmed = await compare(password, user.password);
+    const passwordConfirmed = await this.hashProvider.compareHash(
+      password,
+      user.password,
+    );
 
     if (!passwordConfirmed) {
       throw new AppError("Incorrect email/password combination.", 401);
