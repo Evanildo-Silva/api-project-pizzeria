@@ -1,3 +1,4 @@
+import Category from "@modules/categories/infra/typeorm/entities/category";
 import User from "@modules/users/infra/typeorm/entities/User";
 import { DataSource } from "typeorm";
 import { CreateUsers1699408921898 } from "./migrations/1699408921898-CreateUsers";
@@ -10,6 +11,6 @@ export const dataSource = new DataSource({
   username: "postgres",
   password: "docker",
   database: "apipizzeria",
-  entities: [User],
+  entities: [User, Category],
   migrations: [CreateUsers1699408921898, CreateCategories1699901605293],
 });
