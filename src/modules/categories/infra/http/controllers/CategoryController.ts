@@ -1,4 +1,5 @@
 import CreateCategoryService from "@modules/categories/services/CreateCategoryService";
+import ListCategoriesService from "@modules/categories/services/ListCategoriesService";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
@@ -13,5 +14,13 @@ class CategoryController {
     });
 
     return response.json(category);
+  }
+
+  public async index(request: Request, response: Response): Promise<Response> {
+    const categories = container.resolve(ListCategoriesService);
+
+    const categoriesList = categories.execute();
+
+    return response.json(categoriesList);
   }
 }
