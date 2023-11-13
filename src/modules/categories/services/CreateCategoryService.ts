@@ -1,5 +1,6 @@
 import AppError from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+import { ICategory } from "../domain/models/ICategory";
 import { ICreateCategory } from "../domain/models/ICreateCategory";
 import { ICategoryRepository } from "../domain/repositories/ICategoryRepository";
 
@@ -10,7 +11,7 @@ class CreateCategoryService {
     private categoryRepository: ICategoryRepository,
   ) {}
 
-  public async execute({ name }: ICreateCategory) {
+  public async execute({ name }: ICreateCategory): Promise<ICategory> {
     const categoryExists = await this.categoryRepository.findByName(name);
 
     if (categoryExists) {
