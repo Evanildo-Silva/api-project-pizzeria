@@ -19,7 +19,7 @@ class CategoryController {
   public async index(request: Request, response: Response): Promise<Response> {
     const categories = container.resolve(ListCategoriesService);
 
-    const categoriesList = categories.execute();
+    const categoriesList = await categories.execute();
 
     return response.json(categoriesList);
   }
