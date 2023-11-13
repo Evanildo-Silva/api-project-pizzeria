@@ -17,4 +17,6 @@ categoriesRouter.post(
   categoryController.create,
 );
 
+categoriesRouter.get("/index", isAuthenticated, categoryController.index);
+
 export default categoriesRouter;
