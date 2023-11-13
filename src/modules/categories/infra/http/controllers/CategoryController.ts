@@ -24,3 +24,5 @@ class CategoryController {
     return response.json(categoriesList);
   }
 }
+
+export default CategoryController;
