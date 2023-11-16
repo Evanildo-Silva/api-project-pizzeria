@@ -3,7 +3,7 @@ import { ICreateCategory } from "@modules/categories/domain/models/ICreateCatego
 import { ICategoryRepository } from "@modules/categories/domain/repositories/ICategoryRepository";
 import { dataSource } from "@shared/infra/typeorm";
 import { Repository } from "typeorm";
-import Category from "../entities/category";
+import Category from "../entities/Category";
 
 class CategoryRepository implements ICategoryRepository {
   private ormRepository: Repository<Category>;
