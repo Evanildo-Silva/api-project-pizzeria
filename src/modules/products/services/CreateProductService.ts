@@ -24,6 +24,10 @@ class CreateProductService {
       throw new AppError("Product name already used.");
     }
 
+    if (!banner) {
+      throw new AppError("Error uploading image");
+    }
+
     const product = await this.productRepository.create({
       name,
       price,
