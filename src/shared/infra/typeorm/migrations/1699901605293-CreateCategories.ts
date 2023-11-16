@@ -9,6 +9,7 @@ export class CreateCategories1699901605293 implements MigrationInterface {
           {
             name: "id",
             type: "uuid",
+            isPrimary: true,
             generationStrategy: "uuid",
             default: "uuid_generate_v4()",
           },
