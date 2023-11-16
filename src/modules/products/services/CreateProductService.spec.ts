@@ -19,10 +19,6 @@ describe("CreateProduct", () => {
       banner: "image",
       category_id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
     });
-    console.log(
-      "🚀 ~ file: CreateProductService.spec.ts:21 ~ it ~ product:",
-      product,
-    );
 
     expect(product).toHaveProperty("id");
   });
