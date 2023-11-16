@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 
 @Entity("products")
-export class Product {
+class Product {
   @PrimaryGeneratedColumn()
   id: string;
 
@@ -26,7 +26,7 @@ export class Product {
   banner: string;
 
   @ManyToOne(() => Category, category => category.products)
-  category: Category;
+  category_id: Category;
 
   @CreateDateColumn()
   created_at: Date;
@@ -34,3 +34,5 @@ export class Product {
   @UpdateDateColumn()
   updated_at: Date;
 }
+
+export default Product;

@@ -1,4 +1,4 @@
-import { Product } from "@modules/products/infra/typeorm/entities/Product";
+import Product from "@modules/products/infra/typeorm/entities/Product";
 
 export interface ICategory {
   id: string;

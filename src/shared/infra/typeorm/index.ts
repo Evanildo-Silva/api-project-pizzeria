@@ -1,5 +1,5 @@
 import Category from "@modules/categories/infra/typeorm/entities/Category";
-import { Product } from "@modules/products/infra/typeorm/entities/Product";
+import Product from "@modules/products/infra/typeorm/entities/Product";
 import User from "@modules/users/infra/typeorm/entities/User";
 import { DataSource } from "typeorm";
 import { CreateUsers1699408921898 } from "./migrations/1699408921898-CreateUsers";

@@ -1,5 +1,5 @@
 import { ICategory } from "@modules/categories/domain/models/ICategory";
-import { Product } from "@modules/products/infra/typeorm/entities/Product";
+import Product from "@modules/products/infra/typeorm/entities/Product";
 import {
   Column,
   CreateDateColumn,
@@ -23,7 +23,7 @@ class Category implements ICategory {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => Product, product => product.category)
+  @OneToMany(() => Product, product => product.category_id)
   products: Product[];
 }
 
