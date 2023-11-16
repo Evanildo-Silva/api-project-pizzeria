@@ -1,9 +1,10 @@
 import { ICreateProduct } from "@modules/products/domain/models/ICreateProduct";
+import { IProductRepository } from "@modules/products/domain/repositories/IProductRepository";
 import { dataSource } from "@shared/infra/typeorm";
 import { Equal, Repository } from "typeorm";
 import Product from "../entities/Product";
 
-class ProductRepository {
+class ProductRepository implements IProductRepository {
   private ormRepository: Repository<Product>;
 
   constructor() {
@@ -28,6 +29,12 @@ class ProductRepository {
     });
 
     return products;
+  }
+
+  public async findByName(name: string): Promise<Product | null> {
+    const product = await this.ormRepository.findOneBy({ name });
+
+    return product;
   }
 }
 
