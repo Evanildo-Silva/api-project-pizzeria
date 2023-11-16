@@ -1,4 +1,4 @@
-import Category from "@modules/categories/infra/typeorm/entities/category";
+import Category from "@modules/categories/infra/typeorm/entities/Category";
 import { v4 as uuidv4 } from "uuid";
 import { ICategory } from "../../models/ICategory";
 import { ICreateCategory } from "../../models/ICreateCategory";
