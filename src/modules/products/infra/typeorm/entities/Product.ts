@@ -26,7 +26,7 @@ class Product {
   banner: string;
 
   @ManyToOne(() => Category, category => category.products)
-  category_id: Category;
+  category_id: Category["id"];
 
   @CreateDateColumn()
   created_at: Date;
