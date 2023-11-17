@@ -10,8 +10,8 @@ class ListProductByCategoryService {
     private productRepository: IProductRepository,
   ) {}
 
-  public async execute({ name }: IShowProduct): Promise<IProduct[] | null> {
-    const products = await this.productRepository.findByCategory(name);
+  public async execute({ category }: IShowProduct): Promise<IProduct[] | null> {
+    const products = await this.productRepository.findByCategory(category);
 
     if (products?.length !== 0) {
       return products;

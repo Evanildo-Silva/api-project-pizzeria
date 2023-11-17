@@ -1,3 +1,3 @@
 export interface IShowProduct {
-  name: string;
+  category: string;
 }

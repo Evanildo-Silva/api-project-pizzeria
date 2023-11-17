@@ -21,10 +21,10 @@ class ProductRepository implements IProductRepository {
     return product;
   }
 
-  public async findByCategory(category_id: string): Promise<Product[] | null> {
+  public async findByCategory(category: string): Promise<Product[] | null> {
     const products = await this.ormRepository.find({
       where: {
-        category_id: Equal(category_id),
+        category: Equal(category),
       },
     });
 

@@ -24,4 +24,10 @@ productRouter.post(
   productController.create,
 );
 
+productRouter.get(
+  "/bycategory",
+  isAuthenticated,
+  productController.findByCategory,
+);
+
 export default productRouter;

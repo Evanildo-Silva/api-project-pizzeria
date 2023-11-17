@@ -1,4 +1,5 @@
 import CreateProductService from "@modules/products/services/CreateProductService";
+import ListProductByCategoryService from "@modules/products/services/ListProductByCategoryService";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
@@ -19,6 +20,19 @@ class ProductController {
     });
 
     return response.status(201).json(product);
+  }
+
+  public async findByCategory(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const category = request.query.category as string;
+
+    const productList = container.resolve(ListProductByCategoryService);
+
+    const products = await productList.execute({ category });
+
+    return response.json(products);
   }
 }
 
