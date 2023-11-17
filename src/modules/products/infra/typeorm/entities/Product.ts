@@ -26,8 +26,8 @@ class Product implements IProduct {
   @Column()
   banner: string;
 
-  @ManyToOne(() => Category, category => category.products)
-  category_id: Category["id"];
+  @ManyToOne(() => Category, categoryId => categoryId.products)
+  category: Category;
 
   @CreateDateColumn()
   created_at: Date;

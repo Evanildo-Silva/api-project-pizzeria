@@ -23,7 +23,7 @@ class Category implements ICategory {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @OneToMany(() => Product, product => product.category_id)
+  @OneToMany(() => Product, product => product.category)
   products: Product[];
 }
 

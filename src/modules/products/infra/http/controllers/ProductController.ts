@@ -4,7 +4,8 @@ import { container } from "tsyringe";
 
 class ProductController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, price, description, category_id } = request.body;
+    const { name, price, description, category } = request.body;
+
     const banner = request.file!.filename;
 
     const createProduct = container.resolve(CreateProductService);
@@ -14,7 +15,7 @@ class ProductController {
       price,
       description,
       banner,
-      category_id,
+      category,
     });
 
     return response.status(201).json(product);

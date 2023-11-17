@@ -3,5 +3,5 @@ export interface ICreateProduct {
   price: number;
   description: string;
   banner: string;
-  category_id: string;
+  category: string;
 }

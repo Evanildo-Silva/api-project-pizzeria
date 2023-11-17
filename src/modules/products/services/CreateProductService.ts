@@ -7,7 +7,7 @@ import { IProductRepository } from "../domain/repositories/IProductRepository";
 @injectable()
 class CreateProductService {
   constructor(
-    @inject("ProducRepository")
+    @inject("ProductRepository")
     private productRepository: IProductRepository,
   ) {}
 
@@ -16,7 +16,7 @@ class CreateProductService {
     price,
     description,
     banner,
-    category_id,
+    category,
   }: ICreateProduct): Promise<IProduct> {
     const productExists = await this.productRepository.findByName(name);
 
@@ -33,7 +33,7 @@ class CreateProductService {
       price,
       description,
       banner,
-      category_id,
+      category,
     });
 
     return product;
