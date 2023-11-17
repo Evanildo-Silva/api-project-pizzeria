@@ -1,0 +1,39 @@
+import Category from "@modules/categories/infra/typeorm/entities/Category";
+import { IProduct } from "@modules/products/domain/models/IProduct";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
+
+@Entity("products")
+class Product implements IProduct {
+  @PrimaryGeneratedColumn()
+  id: string;
+
+  @Column()
+  name: string;
+
+  @Column("decimal")
+  price: number;
+
+  @Column()
+  description: string;
+
+  @Column()
+  banner: string;
+
+  @ManyToOne(() => Category, categoryId => categoryId.products)
+  category: Category;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+}
+
+export default Product;
