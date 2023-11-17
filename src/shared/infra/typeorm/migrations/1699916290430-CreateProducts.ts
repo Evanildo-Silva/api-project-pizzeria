@@ -1,4 +1,10 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableColumn,
+  TableForeignKey,
+} from "typeorm";
 
 export class CreateProducts1699916290430 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -33,10 +39,6 @@ export class CreateProducts1699916290430 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: "category_id",
-            type: "uuid",
-          },
-          {
             name: "created_at",
             type: "timestamp with time zone",
             default: "now()",
@@ -47,19 +49,36 @@ export class CreateProducts1699916290430 implements MigrationInterface {
             default: "now()",
           },
         ],
-        foreignKeys: [
-          {
-            columnNames: ["category_id"],
-            referencedTableName: "categories",
-            referencedColumnNames: ["id"],
-            onDelete: "CASCADE",
-          },
-        ],
+      }),
+    );
+    await queryRunner.addColumn(
+      "products",
+      new TableColumn({
+        name: "categoryId",
+        type: "uuid",
+      }),
+    );
+    await queryRunner.createForeignKey(
+      "products",
+      new TableForeignKey({
+        columnNames: ["categoryId"],
+        referencedColumnNames: ["id"],
+        referencedTableName: "categories",
+        onDelete: "CASCADE",
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    const table = await queryRunner.getTable("products");
+    const foreignKey = table?.foreignKeys.find(
+      fk => fk.columnNames.indexOf("categoryId") !== -1,
+    );
+    await queryRunner.dropForeignKey(
+      "products",
+      foreignKey as string | TableForeignKey,
+    );
+    await queryRunner.dropColumn("products", "categoryId");
     await queryRunner.dropTable("products");
   }
 }
