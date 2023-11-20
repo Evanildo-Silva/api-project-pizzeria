@@ -1,10 +1,12 @@
 import Category from "@modules/categories/infra/typeorm/entities/Category";
+import { Item } from "@modules/items/infra/typeorm/entities/Item";
 import { IProduct } from "@modules/products/domain/models/IProduct";
 import {
   Column,
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -26,14 +28,17 @@ class Product implements IProduct {
   @Column()
   banner: string;
 
-  @ManyToOne(() => Category, categoryId => categoryId.products)
-  category: Category;
-
   @CreateDateColumn()
   created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @ManyToOne(() => Category, categoryId => categoryId.products)
+  category: Category;
+
+  @OneToMany(() => Item, item => item.product)
+  items: Item[];
 }
 
 export default Product;
