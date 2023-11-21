@@ -23,7 +23,7 @@ class Order {
   draft: boolean;
 
   @Column({ nullable: true })
-  name: string;
+  name?: string;
 
   @CreateDateColumn()
   created_at: Date;
