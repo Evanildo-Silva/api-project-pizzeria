@@ -22,6 +22,9 @@ class Order {
   @Column({ default: true })
   draft: boolean;
 
+  @Column({ nullable: true })
+  name: string;
+
   @CreateDateColumn()
   created_at: Date;
 
