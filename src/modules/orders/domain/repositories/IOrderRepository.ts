@@ -7,4 +7,5 @@ export interface IOrderRepository {
   findById(id: string): Promise<IOrder | null>;
   sendOrder(id: string): Promise<Order | null>;
   findConfirmedOrders(): Promise<IOrder[] | null>;
+  finishOrder(id: string): Promise<Order | null>;
 }
