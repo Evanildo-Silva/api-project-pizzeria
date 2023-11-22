@@ -48,6 +48,14 @@ class OrderRepository implements IOrderRepository {
 
     return confirmedOrders;
   }
+
+  public async finishOrder(id: string): Promise<Order | null> {
+    await this.ormRepository.update({ id: id }, { status: true });
+
+    const order = await this.ormRepository.findOneBy({ id });
+
+    return order;
+  }
 }
 
 export default OrderRepository;
