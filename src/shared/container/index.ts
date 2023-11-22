@@ -1,5 +1,7 @@
 import { ICategoryRepository } from "@modules/categories/domain/repositories/ICategoryRepository";
 import CategoryRepository from "@modules/categories/infra/typeorm/repositories/CategoryRepository";
+import { IItemRepository } from "@modules/items/domain/repositories/IItemRepository";
+import ItemRepository from "@modules/items/infra/typeorm/repositories/ItemRepository";
 import { IOrderRepository } from "@modules/orders/domain/repositories/IOrderRepository";
 import OrderRepository from "@modules/orders/infra/typeorm/repositories/OrderRepository";
 import { IProductRepository } from "@modules/products/domain/repositories/IProductRepository";
@@ -25,3 +27,5 @@ container.registerSingleton<IOrderRepository>(
   "OrderRepository",
   OrderRepository,
 );
+
+container.registerSingleton<IItemRepository>("ItemRepository", ItemRepository);
