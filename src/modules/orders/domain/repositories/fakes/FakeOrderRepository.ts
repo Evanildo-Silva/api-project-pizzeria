@@ -52,6 +52,18 @@ class FakeOrderRepository implements IOrderRepository {
 
     return order;
   }
+
+  public async finishOrder(id: string): Promise<Order | null> {
+    const order = this.orders.find(order => order.id === id);
+
+    if (!order) {
+      return null;
+    }
+
+    order.status = true;
+
+    return order;
+  }
 }
 
 export default FakeOrderRepository;
