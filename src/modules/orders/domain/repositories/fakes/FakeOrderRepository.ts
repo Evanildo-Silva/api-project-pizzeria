@@ -70,6 +70,14 @@ class FakeOrderRepository implements IOrderRepository {
 
     return order;
   }
+
+  public async findAll(): Promise<IOrder[]> {
+    return this.orders;
+  }
+
+  public async remove(order: IOrder): Promise<void> {
+    this.orders.filter(item => item !== order);
+  }
 }
 
 export default FakeOrderRepository;
