@@ -8,4 +8,6 @@ export interface IOrderRepository {
   sendOrder(id: string): Promise<Order | null>;
   findConfirmedOrders(): Promise<IOrder[] | null>;
   finishOrder(id: string): Promise<Order | null>;
+  findAll(): Promise<IOrder[]>;
+  remove(order: IOrder): Promise<void>;
 }
