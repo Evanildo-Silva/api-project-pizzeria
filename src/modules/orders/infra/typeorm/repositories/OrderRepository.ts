@@ -34,6 +34,20 @@ class OrderRepository implements IOrderRepository {
 
     return order;
   }
+
+  public async findConfirmedOrders(): Promise<IOrder[] | null> {
+    const confirmedOrders = await this.ormRepository.find({
+      where: {
+        draft: false,
+        status: false,
+      },
+      order: {
+        created_at: "DESC",
+      },
+    });
+
+    return confirmedOrders;
+  }
 }
 
 export default OrderRepository;
