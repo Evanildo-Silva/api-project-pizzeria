@@ -56,6 +56,16 @@ class OrderRepository implements IOrderRepository {
 
     return order;
   }
+
+  public async findAll(): Promise<IOrder[]> {
+    const orders = await this.ormRepository.find();
+
+    return orders;
+  }
+
+  public async remove(order: Order): Promise<void> {
+    await this.ormRepository.remove(order);
+  }
 }
 
 export default OrderRepository;
