@@ -6,8 +6,14 @@ import OrderController from "../controllers/OrderController";
 const ordersRouter = Router();
 const orderController = new OrderController();
 
+ordersRouter.get(
+  "/confirmed",
+  isAuthenticated,
+  orderController.confirmedOrders,
+);
+
 ordersRouter.post(
-  "/registe",
+  "/register",
   isAuthenticated,
   celebrate({
     [Segments.BODY]: {
@@ -27,12 +33,6 @@ ordersRouter.get(
     },
   }),
   orderController.show,
-);
-
-ordersRouter.get(
-  "/confirmed",
-  isAuthenticated,
-  orderController.confirmedOrders,
 );
 
 ordersRouter.put(
