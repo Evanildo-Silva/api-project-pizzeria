@@ -26,7 +26,19 @@ class FakeOrderRepository implements IOrderRepository {
   }
 
   public async findConfirmedOrders(): Promise<IOrder[] | null> {
-    throw new Error("Method not implemented.");
+    const confirmedOrders: Order[] = [];
+
+    if (this.orders.length !== 0) {
+      for (let index = 0; index < this.orders.length; index++) {
+        const element = this.orders[index];
+        if (element.draft === false && element.status === false) {
+          confirmedOrders.push(element);
+        }
+      }
+      return confirmedOrders;
+    }
+
+    return null;
   }
 
   public async sendOrder(id: string): Promise<Order | null> {
