@@ -24,8 +24,8 @@ export class Item {
   updated_at: Date;
 
   @ManyToOne(() => Order, order => order.items)
-  order: Order;
+  order_id: Order;
 
   @ManyToOne(() => Product, product => product.items)
-  product: Product;
+  product_id: Product;
 }
