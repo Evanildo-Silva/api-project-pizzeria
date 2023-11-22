@@ -18,6 +18,16 @@ class ItemRepository implements IItemRepository {
 
     return item;
   }
+
+  public async findById(id: string): Promise<Item | null> {
+    const item = this.ormRepository.findOneBy({ id });
+
+    return item;
+  }
+
+  public async remove(item: Item): Promise<void> {
+    await this.ormRepository.remove(item);
+  }
 }
 
 export default ItemRepository;
