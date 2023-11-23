@@ -17,7 +17,13 @@ describe("CreateProduct", () => {
       price: 10.0,
       description: "Produto criado para testes",
       banner: "image",
-      category_id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+      category: {
+        id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+        name: "Categoria teste",
+        products: [],
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     });
 
     expect(product).toHaveProperty("id");
@@ -29,7 +35,13 @@ describe("CreateProduct", () => {
       price: 10.0,
       description: "Produto criado para testes",
       banner: "image",
-      category_id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+      category: {
+        id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+        name: "Categoria teste",
+        products: [],
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     });
 
     expect(
@@ -38,7 +50,13 @@ describe("CreateProduct", () => {
         price: 10.0,
         description: "Produto criado para testes",
         banner: "image",
-        category_id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+        category: {
+          id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+          name: "Categoria teste",
+          products: [],
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

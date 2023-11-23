@@ -34,7 +34,7 @@ class Product implements IProduct {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @ManyToOne(() => Category, categoryId => categoryId.products)
+  @ManyToOne(() => Category, category => category.products)
   category: Category;
 
   @OneToMany(() => Item, item => item.product)

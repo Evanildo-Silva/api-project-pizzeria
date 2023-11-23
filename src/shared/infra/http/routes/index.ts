@@ -1,4 +1,5 @@
 import categoriesRouter from "@modules/categories/infra/http/routes/category.routes";
+import itemsRouter from "@modules/items/infra/http/routes/item.routes";
 import ordersRouter from "@modules/orders/infra/http/routes/order.routes";
 import productRouter from "@modules/products/infra/http/routes/product.routes";
 import sessionRouter from "@modules/users/infra/http/routes/session.routes";
@@ -12,5 +13,6 @@ routes.use("/sessions", sessionRouter);
 routes.use("/category", categoriesRouter);
 routes.use("/product", productRouter);
 routes.use("/order", ordersRouter);
+routes.use("/items", itemsRouter);
 
 export { routes };
