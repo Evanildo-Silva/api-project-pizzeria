@@ -13,16 +13,16 @@ class CreateItemService {
 
   public async execute({
     amount,
-    order_id,
-    product_id,
+    order,
+    product,
   }: ICreateItem): Promise<IItem> {
     if (!amount) {
       throw new AppError("The quantity of items must be informed.");
     }
     const item = await this.itemRepository.create({
       amount,
-      order_id,
-      product_id,
+      order,
+      product,
     });
 
     return item;

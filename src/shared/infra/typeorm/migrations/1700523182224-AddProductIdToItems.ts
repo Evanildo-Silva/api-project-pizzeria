@@ -10,7 +10,7 @@ export class AddProductIdToItems1700523182224 implements MigrationInterface {
     await queryRunner.addColumn(
       "items",
       new TableColumn({
-        name: "product_id",
+        name: "productId",
         type: "uuid",
         isNullable: true,
       }),
@@ -20,7 +20,7 @@ export class AddProductIdToItems1700523182224 implements MigrationInterface {
       "items",
       new TableForeignKey({
         name: "ProductsItems",
-        columnNames: ["product_id"],
+        columnNames: ["productId"],
         referencedTableName: "products",
         referencedColumnNames: ["id"],
         onDelete: "SET NULL",
@@ -30,6 +30,6 @@ export class AddProductIdToItems1700523182224 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey("items", "ProductsItems");
-    await queryRunner.dropColumn("items", "product_id");
+    await queryRunner.dropColumn("items", "productId");
   }
 }

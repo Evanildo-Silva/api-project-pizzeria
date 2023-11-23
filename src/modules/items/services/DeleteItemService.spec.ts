@@ -15,8 +15,8 @@ describe("DeleteItem", () => {
   it("should be able to return the list without the item informed by the id", async () => {
     const item = await fakeItemRepository.create({
       amount: 1,
-      order_id: Mock.order,
-      product_id: Mock.product,
+      order: Mock.order,
+      product: Mock.product,
     });
 
     // TODO verifica como buscar o retorno

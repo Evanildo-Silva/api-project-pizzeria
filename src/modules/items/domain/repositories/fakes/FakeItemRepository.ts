@@ -6,17 +6,13 @@ import { IItemRepository } from "../IItemRepository";
 
 class FakeItemRepository implements IItemRepository {
   private items: Item[] = [];
-  public async create({
-    order_id,
-    product_id,
-    amount,
-  }: ICreateItem): Promise<Item> {
+  public async create({ order, product, amount }: ICreateItem): Promise<Item> {
     const item = new Item();
 
     item.id = uuidv4();
     item.amount = amount;
-    item.order_id = order_id;
-    item.product_id = product_id;
+    item.order = order;
+    item.product = product;
 
     this.items.push(item);
 

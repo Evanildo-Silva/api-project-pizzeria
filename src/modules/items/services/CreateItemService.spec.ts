@@ -15,8 +15,8 @@ describe("CreateItem", () => {
   it("should be able create a new item", async () => {
     const item = await createItem.execute({
       amount: 2,
-      order_id: Mock.order,
-      product_id: Mock.product,
+      order: Mock.order,
+      product: Mock.product,
     });
 
     expect(item).toHaveProperty("id");
@@ -26,8 +26,8 @@ describe("CreateItem", () => {
     expect(
       createItem.execute({
         amount: 0,
-        order_id: Mock.order,
-        product_id: Mock.product,
+        order: Mock.order,
+        product: Mock.product,
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

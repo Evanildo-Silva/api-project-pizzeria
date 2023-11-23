@@ -13,8 +13,8 @@ itemsRouter.post(
   celebrate({
     [Segments.BODY]: {
       amount: Joi.number().required(),
-      order_id: Joi.string().optional(),
-      product_id: Joi.string().optional(),
+      order: Joi.string().required(),
+      product: Joi.string().required(),
     },
   }),
   itemController.create,

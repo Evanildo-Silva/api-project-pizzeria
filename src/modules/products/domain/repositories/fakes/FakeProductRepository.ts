@@ -12,7 +12,7 @@ class FakeProductRepository implements IProductRepository {
     price,
     description,
     banner,
-    category_id,
+    category,
   }: ICreateProduct): Promise<Product> {
     const product = new Product();
 
@@ -21,19 +21,19 @@ class FakeProductRepository implements IProductRepository {
     product.price = price;
     product.description = description;
     product.banner = banner;
-    product.category_id = category_id;
+    product.category = category;
 
     this.products.push(product);
 
     return product;
   }
-  public async findByCategory(category_id: string): Promise<IProduct[] | null> {
+  public async findByCategory(category: string): Promise<IProduct[] | null> {
     const productList: Product[] = [];
 
     for (let index = 0; index < this.products.length; index++) {
       const element = this.products[index];
 
-      if (element.category_id === category_id) {
+      if (element.category.id === category) {
         productList.push(element);
       }
     }

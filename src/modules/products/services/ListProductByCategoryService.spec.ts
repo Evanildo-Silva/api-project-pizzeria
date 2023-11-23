@@ -14,21 +14,39 @@ describe("ListProductByCategory", () => {
         price: 10.0,
         description: "Produto criado para testes",
         banner: "image",
-        category_id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+        category: {
+          id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+          name: "Bebidas",
+          created_at: new Date(),
+          updated_at: new Date(),
+          products: [],
+        },
       },
       {
         name: "Produto teste 2",
         price: 10.0,
         description: "Produto criado para testes",
         banner: "image",
-        category_id: "e08b66fe-cca9-4d51-afa6-e00128b678ab",
+        category: {
+          id: "e08b66fe-cca9-4d51-afa6-e00128b678ab",
+          name: "Bebidas",
+          created_at: new Date(),
+          updated_at: new Date(),
+          products: [],
+        },
       },
       {
         name: "Produto teste 3",
         price: 10.0,
         description: "Produto criado para testes",
         banner: "image",
-        category_id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+        category: {
+          id: "7e6354c1-8e22-4b59-953d-752b03b4076b",
+          name: "Bebidas",
+          created_at: new Date(),
+          updated_at: new Date(),
+          products: [],
+        },
       },
     ];
 

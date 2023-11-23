@@ -5,14 +5,14 @@ import { container } from "tsyringe";
 
 class ItemController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { amount, order_id, product_id } = request.body;
+    const { amount, order, product } = request.body;
 
     const createItem = container.resolve(CreateItemService);
 
     const item = await createItem.execute({
       amount,
-      order_id,
-      product_id,
+      order,
+      product,
     });
 
     return response.json(item);
