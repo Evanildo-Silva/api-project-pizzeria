@@ -28,7 +28,7 @@ ordersRouter.get(
   "/:id",
   isAuthenticated,
   celebrate({
-    [Segments.QUERY]: {
+    [Segments.PARAMS]: {
       id: Joi.string().required(),
     },
   }),
@@ -61,7 +61,7 @@ ordersRouter.delete(
   "/:id",
   isAuthenticated,
   celebrate({
-    [Segments.QUERY]: {
+    [Segments.PARAMS]: {
       id: Joi.string().required(),
     },
   }),
