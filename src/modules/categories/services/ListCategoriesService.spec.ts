@@ -1,10 +1,13 @@
 import FakeCategoryRepository from "../domain/repositories/fakes/FakeCategoryRepository";
+import ListCategoriesService from "./ListCategoriesService";
 
 let fakeCategoryRepository: FakeCategoryRepository;
+let listCategoryService: ListCategoriesService;
 
 describe("ListCategories", () => {
   beforeEach(() => {
     fakeCategoryRepository = new FakeCategoryRepository();
+    listCategoryService = new ListCategoriesService(fakeCategoryRepository);
   });
 
   it("should be able to return a list of categories", async () => {
@@ -20,7 +23,7 @@ describe("ListCategories", () => {
       });
     });
 
-    const categoryList = await fakeCategoryRepository.findAll();
+    const categoryList = await listCategoryService.execute();
 
     expect(categoryList).toHaveLength(3);
     expect(categoryList[0].name).toBe("Category Test One");
