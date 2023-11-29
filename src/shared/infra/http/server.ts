@@ -3,7 +3,7 @@ import "reflect-metadata";
 import { dataSource } from "../typeorm";
 import { app } from "./app";
 
-const port = 3333;
+const port = process.env.PORT ? Number(process.env.PORT) : 3333;
 
 dataSource.initialize().then(() => {
   const server = app.listen(port, () => {
