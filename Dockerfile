@@ -1,6 +1,9 @@
 # Use uma imagem do Node.js com uma versão específica
 FROM node:16-alpine
 
+# Instale o Bash
+RUN apk add --no-cache bash
+
 # Remova o symlink existente do Yarn (se existir)
 RUN rm -f /usr/local/bin/yarnpkg
 
@@ -33,4 +36,4 @@ COPY wait-for-it.sh ./wait-for-it.sh
 RUN chmod +x ./wait-for-it.sh
 
 # Adicione o comando para esperar o banco de dados e rodar as migrações
-CMD ./wait-for-it.sh -t 30 admin:wsUqUATi6CxCBhUSWgq37ZTmj6mFIIda@dpg-clj7doug1b2c73anqufg-a/project_pizzeria:5432 -- yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run && yarn start
+CMD ./wait-for-it.sh -t 30 tcp//admin:wsUqUATi6CxCBhUSWgq37ZTmj6mFIIda@dpg-clj7doug1b2c73anqufg-a/project_pizzeria:5432 -- yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run && yarn start
