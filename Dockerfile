@@ -26,7 +26,7 @@ RUN yarn install
 RUN yarn build
 
 # Adicione o comando para rodar as migrações (exemplo com TypeORM)
-RUN yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run
+RUN sleep 10 && yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run
 
 # Exponha a porta necessária pela sua aplicação
 EXPOSE 3000
