@@ -7,12 +7,6 @@ RUN rm -f /usr/local/bin/yarnpkg
 # Instale o Yarn diretamente do repositório de pacotes Alpine
 RUN apk add --no-cache yarn
 
-# Remova o symlink existente do Yarn (se existir)
-RUN rm -f /usr/local/bin/yarnpkg
-
-# Instale o Yarn diretamente do repositório de pacotes Alpine
-RUN apk add --no-cache yarn
-
 # Crie e defina o diretório de trabalho
 WORKDIR /app
 
@@ -28,8 +22,9 @@ RUN yarn build
 # Exponha a porta necessária pela sua aplicação
 EXPOSE 3000
 
-# Adicione o comando para rodar as migrações (exemplo com TypeORM)
-RUN sleep 10 && yarn typeorm -- -d dist/shared/infra/typeorm/index.js migration:run
+# Adicione o wait-for-it
+COPY wait-for-it.sh /usr/wait-for-it.sh
+RUN chmod +x /usr/wait-for-it.sh
 
-# Comando para iniciar a aplicação
-CMD ["yarn", "start"]
+# Adicione o comando para esperar o banco de dados e rodar as migrações
+CMD /usr/wait-for-it.sh -t 30 db:5432 -- yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run && yarn start
