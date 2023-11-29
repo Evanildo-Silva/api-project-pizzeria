@@ -1,20 +1,26 @@
 # Use a imagem Node.js como base
 FROM node:14-alpine
 
+# Remova o symlink existente do Yarn (se existir)
+RUN rm -f /usr/local/bin/yarnpkg
+
+# Instale o Yarn diretamente do repositório de pacotes Alpine
+RUN apk add --no-cache yarn
+
 # Crie e defina o diretório de trabalho
 WORKDIR /app
 
 # Copie os arquivos necessários para o contêiner
 COPY . .
 
-# Instale as dependências
-RUN npm install
+# Instale as dependências usando o Yarn
+RUN yarn install
 
 # Build da aplicação
-RUN npm run build
+RUN yarn build
 
 # Exponha a porta necessária pela sua aplicação
 EXPOSE 3000
 
 # Comando para iniciar a aplicação
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
