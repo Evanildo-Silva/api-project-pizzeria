@@ -7,6 +7,12 @@ RUN rm -f /usr/local/bin/yarnpkg
 # Instale o Yarn diretamente do repositório de pacotes Alpine
 RUN apk add --no-cache yarn
 
+# Remova o symlink existente do Yarn (se existir)
+RUN rm -f /usr/local/bin/yarnpkg
+
+# Instale o Yarn diretamente do repositório de pacotes Alpine
+RUN apk add --no-cache yarn
+
 # Crie e defina o diretório de trabalho
 WORKDIR /app
 
