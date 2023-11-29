@@ -1,8 +1,17 @@
-# Use a imagem Node.js como base
-FROM node:14-alpine
+# Use uma imagem do Node.js com uma versão específica
+FROM node:16-alpine
 
-# Instale o Yarn globalmente
-RUN npm install -g yarn
+# Remova o symlink existente do Yarn (se existir)
+RUN rm -f /usr/local/bin/yarnpkg
+
+# Instale o Yarn diretamente do repositório de pacotes Alpine
+RUN apk add --no-cache yarn
+
+# Remova o symlink existente do Yarn (se existir)
+RUN rm -f /usr/local/bin/yarnpkg
+
+# Instale o Yarn diretamente do repositório de pacotes Alpine
+RUN apk add --no-cache yarn
 
 # Crie e defina o diretório de trabalho
 WORKDIR /app
