@@ -28,8 +28,9 @@ RUN yarn build
 # Exponha a porta necessária pela sua aplicação
 EXPOSE 3000
 
-# Adicione o comando para rodar as migrações (exemplo com TypeORM)
-RUN sleep 50 && yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run
+# Adicione o wait-for-it
+COPY wait-for-it.sh /usr/wait-for-it.sh
+RUN chmod +x /usr/wait-for-it.sh
 
-# Comando para iniciar a aplicação
-CMD ["yarn", "start"]
+# Adicione o comando para esperar o banco de dados e rodar as migrações
+CMD /usr/wait-for-it.sh -t 30 admin:wsUqUATi6CxCBhUSWgq37ZTmj6mFIIda@dpg-clj7doug1b2c73anqufg-a/project_pizzeria:5432 -- yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run && yarn start
