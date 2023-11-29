@@ -29,8 +29,8 @@ RUN yarn build
 EXPOSE 3000
 
 # Adicione o wait-for-it
-COPY wait-for-it.sh /usr/wait-for-it.sh
-RUN chmod +x /usr/wait-for-it.sh
+COPY wait-for-it.sh ./wait-for-it.sh
+RUN chmod +x ./wait-for-it.sh
 
 # Adicione o comando para esperar o banco de dados e rodar as migrações
-CMD /usr/wait-for-it.sh -t 30 admin:wsUqUATi6CxCBhUSWgq37ZTmj6mFIIda@dpg-clj7doug1b2c73anqufg-a/project_pizzeria:5432 -- yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run && yarn start
+CMD ./wait-for-it.sh -t 30 admin:wsUqUATi6CxCBhUSWgq37ZTmj6mFIIda@dpg-clj7doug1b2c73anqufg-a/project_pizzeria:5432 -- yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run && yarn start
