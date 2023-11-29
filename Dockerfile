@@ -29,7 +29,7 @@ RUN yarn build
 EXPOSE 3000
 
 # Adicione o comando para rodar as migrações (exemplo com TypeORM)
-RUN sleep 10 && yarn typeorm -- -d src/shared/infra/typeorm/index.ts migration:run
+RUN sleep 10 && yarn typeorm -- -d dist/shared/infra/typeorm/index.js migration:run
 
 # Comando para iniciar a aplicação
 CMD ["yarn", "start"]
