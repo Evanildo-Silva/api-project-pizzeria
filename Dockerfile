@@ -1,8 +1,8 @@
 # Use a imagem Node.js como base
 FROM node:14-alpine
 
-# Remova o binário existente do Yarn (se existir)
-RUN rm -f /usr/local/bin/yarn
+# Remova o symlink existente do Yarn (se existir)
+RUN rm -f /usr/local/bin/yarnpkg
 
 # Instale o Yarn globalmente
 RUN npm install -g yarn
