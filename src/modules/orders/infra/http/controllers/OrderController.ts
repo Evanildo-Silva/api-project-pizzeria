@@ -22,7 +22,7 @@ class OrderController {
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
-    const id = request.params.id as string;
+    const id = request.query.id as string;
 
     const showOrder = container.resolve(ShowOrderService);
 
