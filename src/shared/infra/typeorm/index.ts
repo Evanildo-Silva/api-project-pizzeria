@@ -14,11 +14,11 @@ import { AddProductIdToItems1700523182224 } from "./migrations/1700523182224-Add
 
 export const dataSource = new DataSource({
   type: "postgres",
-  host: process.env.DATABASE_HOST,
+  host: "localhost",
   port: 5432,
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
+  username: "postgres",
+  password: "docker",
+  database: "apipizzeria",
   entities: [User, Category, Product, Order, Item],
   migrations: [
     CreateUsers1699408921898,
